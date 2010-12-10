@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0;" />
+  <script type="text/javascript" src="../lib/thumbs.js"></script>
+  
+  <script type="text/javascript">
+    function onload() {
+      var callback = function(e) { console.log(e.type); };
+      document.getElementById('touchstart').addEventListener('touchstart', callback);
+      document.getElementById('mousedown').addEventListener('mousedown', callback);
+      document.getElementById('touchend').addEventListener('touchend', callback);
+      document.getElementById('mouseup').addEventListener('mouseup', callback);
+      document.getElementById('tap').addEventListener('tap', callback);
+      document.getElementById('click').addEventListener('click', callback);
+    }
+
+    window.addEventListener('load', onload);
+  </script>
+
+  <style type="text/css">
+    * {
+      -webkit-touch-callout: none; 
+      -webkit-user-select: none;
+    }
+    .button {
+      background-color:#AEBBCD;
+      border-color:#516885;
+      border-radius:8px;
+      border-style:solid;
+      border-width:0px 1px 1px 0px;
+      color:#3C4651;
+      display:block;
+      font-family:Helvetica, sans-serif;
+      font-weight:bold;
+      margin:10px auto;
+      padding:10px 8px;
+      text-align:center;
+      width:100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="touchstart" class="button">TouchStart</div>
+  <div id="mousedown" class="button">MouseDown</div>
+  <div id="touchend" class="button">TouchEnd</div>
+  <div id="mouseup" class="button">MouseUp</div>
+  <div id="tap" class="button">Tap</div>
+  <div id="click" class="button">Click</div>
+</body>
+</html>
