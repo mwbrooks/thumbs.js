@@ -1,10 +1,14 @@
 window.addEventListener('load', function(){
 
+  // mousedown
+
   module('mousedown');
 
   test('should use mousedown', function() {
     assert({ listener:'mousedown', receives:'mousedown' });
   });
+
+  // mouseup
 
   module('mouseup');
 
@@ -12,17 +16,23 @@ window.addEventListener('load', function(){
     assert({ listener:'mouseup', receives:'mouseup' });
   });
 
+  // mousemove
+
   module('mousemove');
 
   test('should use mousemove', function() {
     assert({ listener:'mousemove', receives:'mousemove' });
   });
 
+  // click
+
   module('click');
 
   test('should use click', function() {
     assert({ listener:'click', receives:'click' });
   });
+
+  // touchstart
 
   module('touchstart');
 
@@ -34,6 +44,8 @@ window.addEventListener('load', function(){
     assert({ listener:'touchstart', receives:'mousedown' });
   });
 
+  // touchend
+
   module('touchend');
 
   test('should use touchend when touchend is supported', function() {
@@ -44,6 +56,8 @@ window.addEventListener('load', function(){
     assert({ listener:'touchend', receives:'mouseup' });
   });
 
+  // touchmove
+
   module('touchmove');
 
   test('should use touchmove when touchmove is supported', function() {
@@ -53,6 +67,8 @@ window.addEventListener('load', function(){
   test('should use mousemove when touchmove is unsupported', function() {
     assert({ listener:'touchmove', receives:'mousemove' });
   });
+
+  // tap
 
   module('tap');
 
