@@ -1,51 +1,47 @@
 window.addEventListener('load', function(){
-///
-module('touchstart');
 
-test('should use touchstart when touchstart is supported', function() {
-  ok(false, 'not implemented');
-  // assert({ listener:'touchstart', receives:'touchstart' });
-});
+  module('touchstart');
 
-test('should use mousedown when touchstart is unsupported', function() {
-  ok(false, 'not implemented');
-  // assert({ listener:'touchstart', receives:'mousedown' });
-});
+  test('should use touchstart when touchstart is supported', function() {
+    ok(false, 'not implemented');
+    // assert({ listener:'touchstart', receives:'touchstart' });
+  });
 
-module('touchend');
+  test('should use mousedown when touchstart is unsupported', function() {
+    assert({ listener:'touchstart', receives:'mousedown' });
+  });
 
-test('should use touchend when touchend is supported', function() {
-  ok(false, 'not implemented');
-  // assert({ listener:'touchend', receives:'touchend' });
-});
+  module('touchend');
 
-test('should use mouseup when touchend is unsupported', function() {
-  ok(false, 'not implemented');
-  // assert({ listener:'touchend', receives:'mouseup' });
-});
+  test('should use touchend when touchend is supported', function() {
+    ok(false, 'not implemented');
+    // assert({ listener:'touchend', receives:'touchend' });
+  });
 
-module('touchmove');
+  test('should use mouseup when touchend is unsupported', function() {
+    assert({ listener:'touchend', receives:'mouseup' });
+  });
 
-test('should use touchmove when touchmove is supported', function() {
-  ok(false, 'not implemented');
-  // assert({ listener:'touchmove', receives:'touchmove' });
-});
+  module('touchmove');
 
-test('should use mousemove when touchmove is unsupported', function() {
-  ok(false, 'not implemented');
-  // assert({ listener:'touchmove', receives:'mousemove' });
-});
+  test('should use touchmove when touchmove is supported', function() {
+    ok(false, 'not implemented');
+    // assert({ listener:'touchmove', receives:'touchmove' });
+  });
 
-module('tap');
+  test('should use mousemove when touchmove is unsupported', function() {
+    assert({ listener:'touchmove', receives:'mousemove' });
+  });
 
-test('should use tap when touch events are supported', function() {
-  ok(false, 'not implemented');
-  // assert({ listener:'tap', receives:'tap' });
-});
+  module('tap');
 
-test('should use click when touch events are unsupported', function() {
-  ok(false, 'not implemented');
-  // assert({ listener:'tap', receives:'click' });
-});
-///
+  test('should use tap when touch events are supported', function() {
+    ok(false, 'not implemented');
+    // assert({ listener:'tap', receives:'tap' });
+  });
+
+  test('should use click when tap is unsupported', function() {
+    assert({ listener:'tap', receives:'click' });
+  });
+
 });
