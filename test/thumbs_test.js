@@ -1,5 +1,29 @@
 window.addEventListener('load', function(){
 
+  module('mousedown');
+
+  test('should use mousedown', function() {
+    assert({ listener:'mousedown', receives:'mousedown' });
+  });
+
+  module('mouseup');
+
+  test('should use mouseup', function() {
+    assert({ listener:'mouseup', receives:'mouseup' });
+  });
+
+  module('mousemove');
+
+  test('should use mousemove', function() {
+    assert({ listener:'mousemove', receives:'mousemove' });
+  });
+
+  module('click');
+
+  test('should use click', function() {
+    assert({ listener:'click', receives:'click' });
+  });
+
   module('touchstart');
 
   test('should use touchstart when touchstart is supported', function() {
