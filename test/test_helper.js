@@ -42,9 +42,9 @@
       0,            // button
       null          // relatedTarget
     );
-    
+
     expect(1);
-    QUnit.stop();
+    QUnit.stop(300);
     element.dispatchEvent(event);
   };
   
