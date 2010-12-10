@@ -79,5 +79,7 @@ window.addEventListener('load', function(){
   test('should use click when tap is unsupported', function() {
     assert({ listener:'tap', receives:'click' });
   });
+  
+  // tap requires touchstart + touchend - touchmove
 
 });
