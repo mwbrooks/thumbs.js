@@ -674,6 +674,12 @@ function done() {
 		}
 
 		result.innerHTML = html;
+
+    // Add test results to the top\
+    var result = id("qunit-testresult-top");
+    if (result) {
+      result.innerHTML = html;
+    }
 	}
 
 	QUnit.done( config.stats.bad, config.stats.all );

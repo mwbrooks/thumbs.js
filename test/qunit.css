@@ -1,16 +1,16 @@
 /** Font Family and Sizes */
 
-#qunit-tests, #qunit-header, #qunit-banner, #qunit-testrunner-toolbar, #qunit-userAgent, #qunit-testresult {
+#qunit-tests, #qunit-header, #qunit-banner, #qunit-testrunner-toolbar, #qunit-userAgent, #qunit-testresult, #qunit-testresult-top {
 	font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
 }
 
-#qunit-testrunner-toolbar, #qunit-userAgent, #qunit-testresult, #qunit-tests li { font-size: small; }
+#qunit-testrunner-toolbar, #qunit-userAgent, #qunit-testresult, #qunit-testresult-top, #qunit-tests li { font-size: small; }
 #qunit-tests { font-size: smaller; }
 
 
 /** Resets */
 
-#qunit-tests, #qunit-tests ol, #qunit-header, #qunit-banner, #qunit-userAgent, #qunit-testresult {
+#qunit-tests, #qunit-tests ol, #qunit-header, #qunit-banner, #qunit-userAgent, #qunit-testresult, #qunit-testresult {
 	margin: 0;
 	padding: 0;
 }
@@ -32,6 +32,16 @@
 	-moz-border-radius: 15px 15px 0 0;
 	-webkit-border-top-right-radius: 15px;
 	-webkit-border-top-left-radius: 15px;
+}
+
+#qunit-testresult-top {
+	border-bottom: 1px solid white;
+
+	margin: 0px;
+	padding: 0.5em 0.5em 0.5em 2.5em;
+
+	color: #2b81af;
+	background-color: #D2E0E6;
 }
 
 #qunit-header a {
