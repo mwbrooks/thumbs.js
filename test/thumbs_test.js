@@ -73,8 +73,7 @@ window.addEventListener('load', function(){
   module('tap');
 
   test('should use tap when touch events are supported', function() {
-    ok(false, 'not implemented');
-    // assert({ listener:'tap', receives:'tap' });
+    assert({ listener:'tap', receives:'tap' });
   });
 
   test('should use click when tap is unsupported', function() {
