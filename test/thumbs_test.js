@@ -3,8 +3,7 @@ window.addEventListener('load', function(){
   module('touchstart');
 
   test('should use touchstart when touchstart is supported', function() {
-    ok(false, 'not implemented');
-    // assert({ listener:'touchstart', receives:'touchstart' });
+    assert({ listener:'touchstart', receives:'touchstart' });
   });
 
   test('should use mousedown when touchstart is unsupported', function() {
@@ -14,8 +13,7 @@ window.addEventListener('load', function(){
   module('touchend');
 
   test('should use touchend when touchend is supported', function() {
-    ok(false, 'not implemented');
-    // assert({ listener:'touchend', receives:'touchend' });
+    assert({ listener:'touchend', receives:'touchend' });
   });
 
   test('should use mouseup when touchend is unsupported', function() {
@@ -25,8 +23,7 @@ window.addEventListener('load', function(){
   module('touchmove');
 
   test('should use touchmove when touchmove is supported', function() {
-    ok(false, 'not implemented');
-    // assert({ listener:'touchmove', receives:'touchmove' });
+    assert({ listener:'touchmove', receives:'touchmove' });
   });
 
   test('should use mousemove when touchmove is unsupported', function() {
