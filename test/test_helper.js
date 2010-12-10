@@ -14,10 +14,8 @@
    *                Example: { listener: 'touchstart', receives: 'mousedown' }
    */
   scope.assert = function(options) {
-    // Fixture is predefined in the markup
-    var element = document.getElementById('button');
+    var element = createButton();
 
-    // @TODO Remove the event listener
     element.addEventListener(options['listener'], function(event) {
       ok(true, 'received ' + options['receives'] + ' event');
       QUnit.start();
@@ -47,5 +45,27 @@
     QUnit.stop(300);
     element.dispatchEvent(event);
   };
-  
+
+  /**
+   * Utility functon to create a button.
+   *
+   * Destroys an existing button and recreates it.
+   * This ensures that all event listeners are removed.
+   */
+  var createButton = function() {
+    var element = document.getElementById('button');
+
+    if (element) {
+      element.parentNode.removeChild(element);
+    }
+
+    element = document.createElement('a');
+    element.setAttribute('id', 'button');
+    element.setAttribute('href', '#');
+
+    document.getElementById('qunit-fixture').appendChild(element);
+
+    return element;
+  };
+
 })(window);
