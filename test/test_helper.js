@@ -14,35 +14,32 @@
    *                Example: { listener: 'touchstart', receives: 'mousedown' }
    */
   scope.assert = function(options) {
-    var element = createButton();
+    var element  = createButton();
+    var event    = createEvent(options['receives']);
+    var callback = {
+      onTrigger: function() {
+        ok(true, 'received ' + options['receives'] + ' event');
+      },
+      onTimeout: function() {
+        ok(false, 'did not receive ' + options['receives'] + ' event before the time out');
+      }
+    };
 
     element.addEventListener(options['listener'], function(event) {
-      ok(true, 'received ' + options['receives'] + ' event');
+      (options['onTrigger']) ? options.onTrigger() : callback.onTrigger();
+      clearTimeout(timeoutId);
       QUnit.start();
     }, false);
     
-    var eventType = options['receives'];
-    var event     = document.createEvent('MouseEvents');
-    event.initMouseEvent(
-      eventType,    // eventType
-      true,         // canBubble
-      true,         // cancelable
-      window,       // view
-      0,            // detail (mouse click count)
-      0,            // screenX
-      0,            // screenY
-      0,            // clientX
-      0,            // clientY
-      false,        // ctrlKey
-      false,        // altKey
-      false,        // shiftKey
-      false,        // metaKey
-      0,            // button
-      null          // relatedTarget
-    );
 
     expect(1);
-    QUnit.stop(300);
+    QUnit.stop();
+
+    var timeoutId = setTimeout(function() {
+      (options['onTimeout']) ? options.onTimeout() : callback.onTimeout();
+      QUnit.start();
+    }, 300);
+
     element.dispatchEvent(event);
   };
 
@@ -67,5 +64,54 @@
 
     return element;
   };
+
+  /**
+   * Utility function to create an event.
+   *
+   * @param name of the event
+   * @return event object
+   */
+  var createEvent = function(name) {
+    var event = document.createEvent('MouseEvents');
+    event.initMouseEvent(
+      name,         // eventType
+      true,         // canBubble
+      true,         // cancelable
+      window,       // view
+      0,            // detail (mouse click count)
+      0,            // screenX
+      0,            // screenY
+      0,            // clientX
+      0,            // clientY
+      false,        // ctrlKey
+      false,        // altKey
+      false,        // shiftKey
+      false,        // metaKey
+      0,            // button
+      null          // relatedTarget
+    );
+
+    return event;
+  };
+
+ var event     = document.createEvent('MouseEvents');
+    event.initMouseEvent(
+      eventType,    // eventType
+      true,         // canBubble
+      true,         // cancelable
+      window,       // view
+      0,            // detail (mouse click count)
+      0,            // screenX
+      0,            // screenY
+      0,            // clientX
+      0,            // clientY
+      false,        // ctrlKey
+      false,        // altKey
+      false,        // shiftKey
+      false,        // metaKey
+      0,            // button
+      null          // relatedTarget
+    );
+
 
 })(window);
