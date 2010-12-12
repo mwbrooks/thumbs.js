@@ -80,6 +80,58 @@ window.addEventListener('load', function(){
     assert({ listener:'tap', receives:'click' });
   });
   
-  // tap requires touchstart + touchend - touchmove
+  test('should not fire tap on touchstart', function() {
+    assert({
+      listener: 'tap',
+      receives: 'touchstart',
+      onTrigger: function() { ok(false); },
+      onTimeout: function() { ok(true, 'did not receive touchstart event'); }
+    });
+  });
+
+  test('should not fire tap on touchmove', function() {
+    assert({
+      listener: 'tap',
+      receives: 'touchmove',
+      onTrigger: function() { ok(false); },
+      onTimeout: function() { ok(true, 'did not receive touchmove event'); }
+    });
+  });
+
+  test('should not fire tap on touchup', function() {
+    assert({
+      listener: 'tap',
+      receives: 'touchup',
+      onTrigger: function() { ok(false); },
+      onTimeout: function() { ok(true, 'did not receive touchup event'); }
+    });
+  });
+
+  test('should not fire tap on mousedown', function() {
+    assert({
+      listener: 'tap',
+      receives: 'mousedown',
+      onTrigger: function() { ok(false); },
+      onTimeout: function() { ok(true, 'did not receive mousedown event'); }
+    });
+  });
+
+  test('should not fire tap on mousemove', function() {
+    assert({
+      listener: 'tap',
+      receives: 'mousemove',
+      onTrigger: function() { ok(false); },
+      onTimeout: function() { ok(true, 'did not receive mousemove event'); }
+    });
+  });
+
+  test('should not fire tap on mouseup', function() {
+    assert({
+      listener: 'tap',
+      receives: 'mouseup',
+      onTrigger: function() { ok(false); },
+      onTimeout: function() { ok(true, 'did not receive mouseup event'); }
+    });
+  });
 
 });
