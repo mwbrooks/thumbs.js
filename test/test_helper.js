@@ -1,68 +1,74 @@
 (function(scope) {
 
   /**
-   * Convience function for event mouse event assertion.
+   * Event Listener Assertion
    *
-   * The function will add an event listener to the button fixture and
-   * dispatch an event on the button fixture. You define the type of event
-   * listener and dispatcher.
+   * Listens for an event on a custom element and
+   * fires onTrigger or onTimeout.
    *
-   * A QUnit assertion will fire if the event is received.
-   *
-   * @param options JSON object that defines the events to dispatch and listen for.
-   *                Example: { listener: 'touchstart', receives: 'touchstart' }
-   *                Example: { listener: 'touchstart', receives: 'mousedown' }
+   * @param  {String} name of the event to listen for
+   * @param  {Object} options { onTrigger: {Function}, onTimeout: {Function} }
+   * @return {Object} of chainable actions
    */
-  scope.assert = function(options) {
-    var element  = createButton();
-    var event    = createEvent(options['receives']);
-    var callback = {
-      onTrigger: function() {
-        ok(true, 'received ' + options['receives'] + ' event');
-      },
-      onTimeout: function() {
-        ok(false, 'did not receive ' + options['receives'] + ' event before the time out');
-      }
-    };
+  scope.listen = function(name, options) {
+    QUnit.stop();
+    expect(1);
 
-    element.addEventListener(options['listener'], function(event) {
-      (options['onTrigger']) ? options.onTrigger() : callback.onTrigger();
+    var options = merge(options, defaultOptions);
+    var element = document.createElement('a');
+
+    element.addEventListener(name, function(e) {
       clearTimeout(timeoutId);
+      options.onTrigger(e);
       QUnit.start();
     }, false);
-    
-
-    expect(1);
-    QUnit.stop();
 
     var timeoutId = setTimeout(function() {
-      (options['onTimeout']) ? options.onTimeout() : callback.onTimeout();
+      options.onTimeout();
       QUnit.start();
     }, 300);
 
-    element.dispatchEvent(event);
+    return {
+      /**
+       * Trigger an event on the listener's element
+       *
+       * @param {String} name of event to trigger
+       */
+      trigger: function(name) {
+        var e = createEvent(name);
+        element.dispatchEvent(e);
+        return this;
+      }
+    };
   };
 
   /**
-   * Utility functon to create a button.
-   *
-   * Destroys an existing button and recreates it.
-   * This ensures that all event listeners are removed.
+   * Default Options for Listener
    */
-  var createButton = function() {
-    var element = document.getElementById('button');
-
-    if (element) {
-      element.parentNode.removeChild(element);
+  var defaultOptions = {
+    onTrigger: function(e) {
+      ok(true, 'received ' + name + ' event');
+    },
+    onTimeout: function() {
+      ok(false, 'Timed out');
     }
+  };
 
-    element = document.createElement('a');
-    element.setAttribute('id', 'button');
-    element.setAttribute('href', '#');
-
-    document.getElementById('qunit-fixture').appendChild(element);
-
-    return element;
+  /**
+   * Merge Objects
+   *
+   * @param {Object} original with priority
+   * @param {Object} defaults for the obj
+   * @return {Object} new object
+   */
+  var merge = function(original, defaults) {
+      var obj = original || {};
+      for (var key in defaults) {
+          if (typeof obj[key] === 'undefined') {
+              obj[key] = defaults[key];
+          }
+      }
+      return obj;
   };
 
   /**
@@ -93,25 +99,5 @@
 
     return event;
   };
-
- var event     = document.createEvent('MouseEvents');
-    event.initMouseEvent(
-      eventType,    // eventType
-      true,         // canBubble
-      true,         // cancelable
-      window,       // view
-      0,            // detail (mouse click count)
-      0,            // screenX
-      0,            // screenY
-      0,            // clientX
-      0,            // clientY
-      false,        // ctrlKey
-      false,        // altKey
-      false,        // shiftKey
-      false,        // metaKey
-      0,            // button
-      null          // relatedTarget
-    );
-
 
 })(window);
