@@ -16,7 +16,7 @@
 
     var options = merge(options, defaultOptions);
     var element = document.createElement('a');
-
+    
     element.addEventListener(name, function(e) {
       clearTimeout(timeoutId);
       options.onTrigger(e);
@@ -35,6 +35,11 @@
        * @param {String} name of event to trigger
        */
       trigger: function(name) {
+        if (/(touch|tap)/.test(name) && !supports('touchstart')) {
+          return {
+            trigger: function() { return this; }
+          };
+        }
         var e = createEvent(name);
         element.dispatchEvent(e);
         return this;
