@@ -35,14 +35,6 @@ window.addEventListener('load', function(){
   test('should fire tap after sequence of touchstart => touchend', function() {
     listen('tap').trigger('touchstart').trigger('touchend');
   });
-  
-  test('should fire tap when touchmove is under the threshold', function() {
-    ok(false);
-  });
-  
-  test('should not fire tap when touchmove is over the threshold', function() {
-    ok(false);
-  });
 
   test('should not fire tap on touchstart', function() {
     listen('tap', {
