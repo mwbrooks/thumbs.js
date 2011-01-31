@@ -85,7 +85,7 @@
   var createEvent = function(name) {
     var event = null;
 
-    if (/(touch|tap)/.test(name) && supports('touch')) {
+    if (/(touch|tap)/.test(name) && supports(name)) {
       event = document.createEvent('TouchEvent');
       event.initTouchEvent(
         name,               // eventType
