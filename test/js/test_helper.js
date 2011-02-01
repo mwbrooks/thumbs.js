@@ -1,6 +1,23 @@
 (function(scope) {
 
   /**
+   * Determine the event type that the testing device should use.
+   */
+  scope.receiverEventType = function() {
+    var touchable = supports('touchstart');
+    
+    return {
+      down:  touchable ? 'touchstart' : 'mousedown',
+      start: touchable ? 'touchstart' : 'mousedown',
+      up:    touchable ? 'touchend'   : 'mouseup',
+      end:   touchable ? 'touchend'   : 'mouseup',
+      move:  touchable ? 'touchmove'  : 'mousemove',
+      click: touchable ? 'tap'        : 'click',
+      tap:   touchable ? 'tap'        : 'click'
+    };
+  };
+  
+  /**
    * Event Listener Assertion
    *
    * Listens for an event on a custom element and
