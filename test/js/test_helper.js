@@ -100,51 +100,24 @@
    * @return event object
    */
   var createEvent = function(name) {
-    var event = null;
-
-    if (/(touch|tap)/.test(name) && supports(name)) {
-      event = document.createEvent('TouchEvent');
-      event.initTouchEvent(
-        name,               // eventType
-        true,               // canBubble
-        true,               // cancelable
-        window,             // view
-        0,                  // detail (mouse click count)
-        0,                  // screenX
-        0,                  // screenY
-        0,                  // clientX
-        0,                  // clientY
-        false,              // ctrlKey
-        false,              // altKey
-        false,              // shiftKey
-        false,              // metaKey
-        [],                 // touches
-        [{ screenY: 0.0 }], // targetTouches
-        [],                 // changedTouches
-        1.0,                // scale
-        0.0                 // zoom
-      );
-    }
-    else {
-      event = document.createEvent('MouseEvents');
-      event.initMouseEvent(
-        name,         // eventType
-        true,         // canBubble
-        true,         // cancelable
-        window,       // view
-        0,            // detail (mouse click count)
-        0,            // screenX
-        0,            // screenY
-        0,            // clientX
-        0,            // clientY
-        false,        // ctrlKey
-        false,        // altKey
-        false,        // shiftKey
-        false,        // metaKey
-        0,            // button
-        null          // relatedTarget
-      );
-    }
+    var event = document.createEvent('MouseEvents');
+    event.initMouseEvent(
+      name,         // eventType
+      true,         // canBubble
+      true,         // cancelable
+      window,       // view
+      0,            // detail (mouse click count)
+      0,            // screenX
+      0,            // screenY
+      0,            // clientX
+      0,            // clientY
+      false,        // ctrlKey
+      false,        // altKey
+      false,        // shiftKey
+      false,        // metaKey
+      0,            // button
+      null          // relatedTarget
+    );
 
     return event;
   };
