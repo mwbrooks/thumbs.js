@@ -1,18 +1,4 @@
-(function(scope) {
-
-    var TIMEOUT = 300;
-
-    /**
-     * QUnit Module Environment
-     */
-    scope.environment = {
-        setup: function() {
-            document.getElementById('qunit-fixture').innerHTML = '<a href="#" id="fixture"></a>';
-        },
-        teardown: function() {
-            document.getElementById('qunit-fixture').innerHTML = '';
-        }
-    };
+window.helper = (function(scope) {
 
     /**
      * Default Options for Listener
@@ -24,49 +10,6 @@
         onTimeout: function() {
             ok(false, 'Timed out');
         }
-    };
-
-    /**
-     * Event Listener Assertion
-     *
-     * Listens for an event on a custom element and
-     * fires onTrigger or onTimeout.
-     *
-     * @param  {String} name of the event to listen for
-     * @param  {Object} options { onTrigger: {Function}, onTimeout: {Function} }
-     * @return {Object} of chainable actions
-     */
-    scope.listen = function(name, options) {
-        QUnit.stop();
-        expect(1);
-
-        var options = merge(options, defaultOptions);
-        var element = document.getElementById('fixture');
-
-        element.addEventListener(name, function(e) {
-            clearTimeout(timeoutId);
-            options.onTrigger(e);
-            QUnit.start();
-        }, false);
-
-        var timeoutId = setTimeout(function() {
-            options.onTimeout();
-            QUnit.start();
-        }, TIMEOUT);
-
-        return {
-            /**
-             * Trigger an event on the listener's element
-             *
-             * @param {String} name of event to trigger
-             */
-            trigger: function(name) {
-                var e = createEvent(name);
-                var element = document.getElementById('fixture');
-                element.dispatchEvent(e);
-                return this;
-            }
-        };
     };
 
     /**
@@ -118,4 +61,71 @@
         return event;
     };
 
+    return {
+        /**
+         * QUnit Module Environment
+         */
+        environment: {
+            setup: function() {
+                document.getElementById('qunit-fixture').innerHTML = '<a href="#" id="fixture"></a>';
+            },
+            teardown: function() {
+                document.getElementById('qunit-fixture').innerHTML = '';
+            }
+        },
+
+        /**
+         * Event Listener Assertion
+         *
+         * Listens for an event on a custom element and
+         * fires onTrigger or onTimeout.
+         *
+         * @param  {String} name of the event to listen for
+         * @param  {Object} options { onTrigger: {Function}, onTimeout: {Function} }
+         * @return {Object} of chainable actions
+         */
+        listen: function(name, options) {
+            QUnit.stop();
+            expect(1);
+
+            var TIMEOUT = 300;
+            var options = merge(options, defaultOptions);
+            var element = document.getElementById('fixture');
+
+            element.addEventListener(name, function(e) {
+                clearTimeout(timeoutId);
+                options.onTrigger(e);
+                QUnit.start();
+            }, false);
+
+            var timeoutId = setTimeout(function() {
+                options.onTimeout();
+                QUnit.start();
+            }, TIMEOUT);
+
+            return this;
+        },
+
+        /**
+         * Trigger an event on the listener's element
+         *
+         * @param {String} name of event to trigger
+         */
+        trigger: function(name) {
+            var e = createEvent(name);
+            var element = document.getElementById('fixture');
+            element.dispatchEvent(e);
+            return this;
+        }
+    };
+
 })(window);
+
+/**
+ * Bind each helper property to the global scope
+ */
+for (var key in helper) {
+    if (helper.hasOwnProperty(key)) {
+        window[key] = helper[key];
+    }
+}
