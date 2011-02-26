@@ -1,22 +1,33 @@
 (function(scope) {
 
-  /**
-   * Determine the event type that the testing device should use.
-   */
-  scope.receiverEventType = function() {
-    var touchable = supports('touchstart');
-    
-    return {
-      down:  touchable ? 'touchstart' : 'mousedown',
-      start: touchable ? 'touchstart' : 'mousedown',
-      up:    touchable ? 'touchend'   : 'mouseup',
-      end:   touchable ? 'touchend'   : 'mouseup',
-      move:  touchable ? 'touchmove'  : 'mousemove',
-      click: touchable ? 'tap'        : 'click',
-      tap:   touchable ? 'tap'        : 'click'
+    scope.environment = {
+        setup: function() {
+            var el = document.createElement('a');
+            el.setAttribute('href', '#');
+            el.setAttribute('id', 'fixture');
+            document.getElementById('qunit-fixture').appendChild(el);
+        },
+        teardown: function() {
+            document.getElementById('qunit-fixture').innerHTML = '';
+        }
     };
+
+
+
+  var LISTENER_TIMEOUT = 300;
+
+  /**
+   * Default Options for Listener
+   */
+  var defaultOptions = {
+    onTrigger: function(e) {
+      ok(true, 'received ' + name + ' event');
+    },
+    onTimeout: function() {
+      ok(false, 'Timed out');
+    }
   };
-  
+
   /**
    * Event Listener Assertion
    *
@@ -32,7 +43,7 @@
     expect(1);
 
     var options = merge(options, defaultOptions);
-    var element = document.createElement('a');
+    var element = document.getElementById('fixture');
     
     element.addEventListener(name, function(e) {
       clearTimeout(timeoutId);
@@ -43,7 +54,7 @@
     var timeoutId = setTimeout(function() {
       options.onTimeout();
       QUnit.start();
-    }, 300);
+    }, LISTENER_TIMEOUT);
 
     return {
       /**
@@ -52,28 +63,12 @@
        * @param {String} name of event to trigger
        */
       trigger: function(name) {
-        if (/(touch|tap)/.test(name) && !supports('touchstart')) {
-          return {
-            trigger: function() { return this; }
-          };
-        }
         var e = createEvent(name);
+        var element = document.getElementById('fixture');
         element.dispatchEvent(e);
         return this;
       }
     };
-  };
-
-  /**
-   * Default Options for Listener
-   */
-  var defaultOptions = {
-    onTrigger: function(e) {
-      ok(true, 'received ' + name + ' event');
-    },
-    onTimeout: function() {
-      ok(false, 'Timed out');
-    }
   };
 
   /**
@@ -84,13 +79,15 @@
    * @return {Object} new object
    */
   var merge = function(original, defaults) {
-      var obj = original || {};
-      for (var key in defaults) {
-          if (typeof obj[key] === 'undefined') {
-              obj[key] = defaults[key];
-          }
+    var obj = original || {};
+
+    for (var key in defaults) {
+      if (typeof obj[key] === 'undefined') {
+        obj[key] = defaults[key];
       }
-      return obj;
+    }
+
+    return obj;
   };
 
   /**
@@ -99,8 +96,9 @@
    * @param name of the event
    * @return event object
    */
-  var createEvent = function(name) {
+  var createEvent = function(name, e) {
     var event = document.createEvent('MouseEvents');
+
     event.initMouseEvent(
       name,         // eventType
       true,         // canBubble
@@ -121,15 +119,5 @@
 
     return event;
   };
-
-  /**
-   * Utility function to check event support
-   *
-   * @param {String} name of the event
-   * @return {Boolean}
-   */
-  var supports = function(name) {
-    return (typeof document.body['on' + name] !== 'undefined');
-  }
 
 })(window);
