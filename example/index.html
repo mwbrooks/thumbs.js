@@ -7,12 +7,13 @@
   <script type="text/javascript">
     function onload() {
       var callback = function(e) { console.log(e.type); };
+
       document.getElementById('touchstart').addEventListener('touchstart', callback);
-      document.getElementById('mousedown').addEventListener('mousedown', callback);
       document.getElementById('touchend').addEventListener('touchend', callback);
+      document.getElementById('touchmove').addEventListener('touchmove', callback);
+      document.getElementById('mousedown').addEventListener('mousedown', callback);
       document.getElementById('mouseup').addEventListener('mouseup', callback);
-      document.getElementById('tap').addEventListener('tap', callback);
-      document.getElementById('click').addEventListener('click', callback);
+      document.getElementById('mousemove').addEventListener('mousemove', callback);
     }
 
     window.addEventListener('load', onload);
@@ -23,20 +24,40 @@
       -webkit-touch-callout: none; 
       -webkit-user-select: none;
     }
+    body {
+      color:#3C4651;
+      font-family:Helvetica, sans-serif;
+      font-weight:bold;
+    }
     .button {
       background-color:#AEBBCD;
       border-color:#516885;
       border-radius:8px;
       border-style:solid;
       border-width:0px 1px 1px 0px;
-      color:#3C4651;
       display:block;
-      font-family:Helvetica, sans-serif;
-      font-weight:bold;
       margin:10px auto;
       padding:10px 8px;
       text-align:center;
       width:100px;
+    }
+    .box {
+      bottom:0px;
+      position:absolute;
+      top:0px;
+      z-index:-1;
+    }
+    .left {
+      background-color:#EFEFEF;
+      left:0px;
+      right:50%;
+      text-align:left;
+    }
+    .right {
+      background-color:#CFCFCF;
+      left:50%;
+      right:0px;
+      text-align:right;
     }
   </style>
 </head>
@@ -45,7 +66,7 @@
   <div id="mousedown" class="button">MouseDown</div>
   <div id="touchend" class="button">TouchEnd</div>
   <div id="mouseup" class="button">MouseUp</div>
-  <div id="tap" class="button">Tap</div>
-  <div id="click" class="button">Click</div>
+  <div id="touchmove" class="box left">TouchMove</div>
+  <div id="mousemove" class="box right">MouseMove</div>
 </body>
 </html>
