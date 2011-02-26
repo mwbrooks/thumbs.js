@@ -1,5 +1,29 @@
 window.addEventListener('load', function(){
 
+    // mousedown
+
+    module('mousedown', environment);
+
+    test('should respond to mousedown', 1, function() {
+        listen('mousedown').trigger('mousedown');
+    });
+
+    // mouseup
+
+    module('mouseup', environment);
+
+    test('should respond to mouseup', 1, function() {
+        listen('mouseup').trigger('mouseup');
+    });
+
+    // mousemove
+
+    module('mousemove', environment);
+
+    test('should respond to mousemove', 1, function() {
+        listen('mousemove').trigger('mousemove');
+    });
+
     // touchstart
 
     module('touchstart', environment);
