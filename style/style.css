@@ -1,0 +1,105 @@
+body {
+    background:url(image/background.jpg);
+    margin:0px auto;
+    padding-top:50px;
+    width:900px;
+}
+
+article,header,section {
+    display:block;
+}
+
+code .keyword              { color: #000; font-weight: bold; }
+code .string, code .regexp { color: #D14; }
+code .class, code .special { color: #000; font-weight: bold; }
+code .number               { color: #FFB17A; }
+code .comment              { color: #998; }
+
+#content {
+    float:left;
+    font-family:"2DumbRegular", "Courier", sans-serif;
+    width:500px;
+}
+
+#content > header {
+    background:url(image/title.png) no-repeat 0 0;
+    height:101px;
+    margin-bottom:75px;
+}
+
+#content h1 {
+    font-size:30px;
+    font-weight:normal;
+    margin:1.67em 0px 0.67em 0px;
+    text-transform:lowercase;
+}
+
+#content p {
+    line-height:1.67em;
+}
+
+#content pre {
+    background-color:rgba(0, 0, 0, 0.05);
+    padding-left:1em;
+}
+
+#content code {
+    font-family:"Courier", sans-serif;
+    font-size:13px;
+}
+
+#demo {
+    float:right;
+    height:709px;
+    position:relative;
+    width:361px;
+}
+
+#demo header {
+    background:url(image/phone.png) no-repeat 0px 0px;
+    height:709px;
+    position:absolute;
+    width:361px;
+    z-index:-1;
+}
+
+#demo > footer {
+    background-color:rgba(0, 0, 0, 0.1);
+    height:480px;
+    left:18px;
+    position:absolute;
+    top:114px;
+    width:322px;
+    z-index:-2;
+}
+
+#demo > section {
+    height:478px;
+    left:18px;
+    position:absolute;
+    top:114px;
+    width:322px;
+    z-index:1;
+}
+
+#demo > section button {
+    background:none;
+    border:0px;
+    border-radius:0px;
+    display:block;
+    cursor:pointer;
+    font-family:"3DumbRegular";
+    font-size:36px;
+    line-height:1.17em;
+    text-decoration:none;
+    width:322px;
+}
+
+#demo > section button:hover {
+    color:#2c860d;
+}
+
+#demo > section button:hover:before,
+#demo > section button:hover:after {
+    content:'**';
+}
