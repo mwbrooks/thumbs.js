@@ -1,5 +1,6 @@
 body {
     background:url(image/background.jpg);
+    font-family:"Courier", sans-serif;
     margin:0px auto;
     padding-top:50px;
     width:900px;
@@ -25,7 +26,6 @@ code .comment              { color: #998; }
 
 #content {
     float:left;
-    font-family:"2DumbRegular", "Courier New", "Courier", sans-serif;
     width:500px;
 }
 
@@ -139,7 +139,7 @@ code .comment              { color: #998; }
 }
 
 .console {
-    font-family:"2DumbRegular", "Courier New", "Courier", sans-serif;
+    font-family:"Courier New", "Courier", sans-serif;
     background-color:rgba(0, 0, 0, 0.1);
     border-top:2px solid #000000;
     bottom:0px;
