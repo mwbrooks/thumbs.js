@@ -8,6 +8,26 @@
     <link rel="stylesheet" type="text/css" href="style/3dumb/stylesheet.css" />
     <link rel="stylesheet" type="text/css" href="style/style.css" />
 
+    <script type="text/javascript">
+        window.addEventListener('load', function() {
+            var elements    = document.querySelectorAll('.buttons button');
+            var consoleList = document.querySelector('.console ol');
+
+            // add event listener for each button exxample
+            for (var i = 0, l = elements.length; i < l; i++) {
+                var element = elements[i];
+
+                // each event will be logged to the virtual console
+                element.addEventListener(element.innerHTML, function(e) {
+                    var li = document.createElement('li');
+                    li.innerHTML = e.type;
+                    consoleList.appendChild(li);
+
+                    consoleList.scrollTop = consoleList.scrollHeight;
+                }, false);
+            }
+        }, false);
+    </script>
 </head>
 
 <body>
@@ -55,12 +75,6 @@ element.addEventListener('touchstart', callback, false);
             </div>
             <div class="console">
                 <ol>
-                    <li>mousedown</li>
-                    <li>mouseup</li>
-                    <li>mousemove</li>
-                    <li>touchstart</li>
-                    <li>touchend</li>
-                    <li>touchmove</li>
                 </ol>
                 <p><span class="input">&gt;</span><span class="caret blink">&nbsp;</span></p>
             </div>

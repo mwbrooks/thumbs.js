@@ -127,8 +127,9 @@ code .comment              { color: #998; }
 
 .console ol {
     height:100px;
+    list-style-position:inside;
     overflow:auto;
-    padding-left:40px;
+    padding-left:10px;
 }
 
 .console p {
@@ -137,7 +138,7 @@ code .comment              { color: #998; }
 
 .console .input {
     display:inline-block;
-    width:25px;
+    width:20px;
 }
 
 @-webkit-keyframes blinkit {
