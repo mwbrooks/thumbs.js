@@ -9,6 +9,14 @@ article,header,section {
     display:block;
 }
 
+a {
+    color:#000000;
+    text-decoration:underline;
+}
+a:hover {
+    color:#4F4D47;
+}
+
 code .keyword              { color: #000; font-weight: bold; }
 code .string, code .regexp { color: #D14; }
 code .class, code .special { color: #000; font-weight: bold; }
@@ -40,6 +48,9 @@ code .comment              { color: #998; }
 
 #content pre {
     background-color:rgba(0, 0, 0, 0.05);
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
     padding-left:1em;
 }
 
