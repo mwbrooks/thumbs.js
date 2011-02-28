@@ -47,6 +47,13 @@ Generates:
     build/thumbs.x.x.js
     build/thumbs.x.x.min.js
 
+Running the tests
+-----------------
+
+Open in a Webkit browser:
+
+    test/index.html
+
 Want to contribute?
 -------------------
 
@@ -71,4 +78,3 @@ We appreciate the use of topic branches.
     git push origin issue_23
 
     # send pull request from branch issue_23 to mwbrooks:master
-
