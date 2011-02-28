@@ -45,12 +45,25 @@ element.addEventListener('touchstart', callback, false);
     <article id="demo">
         <header></header>
         <section>
-            <button>touchstart</button>
-            <button>touchend</button>
-            <button>touchmove</button>
-            <button>mousedown</button>
-            <button>mouseup</button>
-            <button>mousemove</button>
+            <div class="buttons">
+                <button>touchstart</button>
+                <button>touchend</button>
+                <button>touchmove</button>
+                <button>mousedown</button>
+                <button>mouseup</button>
+                <button>mousemove</button>
+            </div>
+            <div class="console">
+                <ol>
+                    <li>mousedown</li>
+                    <li>mouseup</li>
+                    <li>mousemove</li>
+                    <li>touchstart</li>
+                    <li>touchend</li>
+                    <li>touchmove</li>
+                </ol>
+                <p><span class="input">&gt;</span><span class="caret blink">&nbsp;</span></p>
+            </div>
         </section>
         <footer></footer>
     </article>

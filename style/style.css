@@ -103,3 +103,57 @@ code .comment              { color: #998; }
 #demo > section button:hover:after {
     content:'**';
 }
+
+.buttons {
+    margin-top:28px;
+}
+
+.console {
+    font-family:"2DumbRegular";
+    background-color:rgba(0, 0, 0, 0.1);
+    border-top:2px solid #000000;
+    bottom:0px;
+    height:125px;
+    position:absolute;
+    width:100%;
+}
+
+.console ol,
+.console li,
+.console p {
+    margin:0px;
+    padding:0px;
+}
+
+.console ol {
+    height:100px;
+    overflow:auto;
+    padding-left:40px;
+}
+
+.console p {
+    padding-left:15px;
+}
+
+.console .input {
+    display:inline-block;
+    width:25px;
+}
+
+@-webkit-keyframes blinkit {
+    from { opacity: 1.0; }
+    25% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    75% { opacity: 0.0; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    -webkit-animation:blinkit 3000ms infinite;
+}
+
+.console .caret {
+    background-color:#333333;
+    color:#FFFFFF;
+    padding:2px 4px;
+}
