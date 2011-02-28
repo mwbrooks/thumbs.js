@@ -12,6 +12,8 @@ Small, transparent, and syntax-less library that adds touch support to your brow
 - Support touch-less devices
 - [PhoneGap](http://phonegap.com) and mobile web friendly
 
+More detail and a demo are on the [thumbs.js homepage](http://mwbrooks.github.com/thumbs.js/).
+
 Requirements
 ------------
 
