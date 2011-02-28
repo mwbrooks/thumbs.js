@@ -18,7 +18,7 @@ a:hover {
 }
 
 code .keyword              { color: #000; font-weight: bold; }
-code .string, code .regexp { color: #D14; }
+code .string, code .regexp { color: #E77600; }
 code .class, code .special { color: #000; font-weight: bold; }
 code .number               { color: #FFB17A; }
 code .comment              { color: #998; }
@@ -30,7 +30,8 @@ code .comment              { color: #998; }
 }
 
 #content > header {
-    background:url(image/title.png) no-repeat 0 0;
+    font-family:"3DumbRegular";
+    font-size:96px;
     height:101px;
     margin-bottom:75px;
 }
@@ -59,6 +60,24 @@ code .comment              { color: #998; }
     font-size:13px;
 }
 
+#content ul {
+    list-style:none;
+    padding-left:20px;
+}
+
+#content li:before {
+    content:'>';
+    font-family:"3DumbRegular";
+    font-size:3em;
+    padding-right:10px;
+    position:relative;
+    top:0.3em;
+}
+
+#content li {
+    line-height:2em;
+}
+
 #demo {
     float:right;
     height:709px;
@@ -75,7 +94,7 @@ code .comment              { color: #998; }
 }
 
 #demo > footer {
-    background-color:rgba(0, 0, 0, 0.1);
+    background-color:rgba(216, 213, 204, 0.3);
     height:480px;
     left:18px;
     position:absolute;
