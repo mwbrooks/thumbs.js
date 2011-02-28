@@ -25,12 +25,12 @@ code .comment              { color: #998; }
 
 #content {
     float:left;
-    font-family:"2DumbRegular", "Courier", sans-serif;
+    font-family:"2DumbRegular", "Courier New", "Courier", sans-serif;
     width:500px;
 }
 
 #content > header {
-    font-family:"3DumbRegular";
+    font-family:"3DumbRegular", "Courier New", "Courier", sans-serif;
     font-size:96px;
     height:101px;
     margin-bottom:75px;
@@ -67,7 +67,7 @@ code .comment              { color: #998; }
 
 #content li:before {
     content:'>';
-    font-family:"3DumbRegular";
+    font-family:"3DumbRegular", "Courier New", "Courier", sans-serif;
     font-size:3em;
     padding-right:10px;
     position:relative;
@@ -118,7 +118,7 @@ code .comment              { color: #998; }
     border-radius:0px;
     display:block;
     cursor:pointer;
-    font-family:"3DumbRegular";
+    font-family:"3DumbRegular", "Courier New", "Courier", sans-serif;
     font-size:36px;
     line-height:1.17em;
     text-decoration:none;
@@ -139,7 +139,7 @@ code .comment              { color: #998; }
 }
 
 .console {
-    font-family:"2DumbRegular";
+    font-family:"2DumbRegular", "Courier New", "Courier", sans-serif;
     background-color:rgba(0, 0, 0, 0.1);
     border-top:2px solid #000000;
     bottom:0px;
