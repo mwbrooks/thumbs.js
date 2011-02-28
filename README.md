@@ -1,73 +1,74 @@
 Thumbs
 ======
 
-> Small, transparent, and mobile-minded; Thumbs will use the right touch/mouse event.
+> Add touch support to your browser.
 
-Description
------------
+About
+-----
 
-Include `thumbs.js` in your application and, like magic:
+Small, transparent, and syntax-less library that adds touch support to your browser.
 
-- Touch events will work on the desktop.
-- Mouse events become touch events on mobile.
+- Handy for desktop debugging
+- Support touch-less devices
+- [PhoneGap](http://phonegap.com) and mobile web friendly
 
-Oh, and a `tap` event exists.
-
-Why use it?
------------
-
-Touch events are a common pain-point in mobile Web application development.
-
-Touch events are fast.
-
-Mouse events are slow.
-
-Touch events do not work on the desktop.
-
-You need the desktop to test and debug.
-
-Thumbs ensures that the best event is used, so your application responds on all browsers.
-
-Supports
---------
-
-  - Desktop Webkit (Safari / Chrome)
-  - iOS
-  - Android
-
-Installation
+Requirements
 ------------
 
-Run
-
-    make
-
-Copy one of the following to your application
-
-    build/thumbs.js
-    build/thumbs.min.js
+- Webkit browser (we will add FireFox support soon)
 
 Usage
 -----
 
-    <!-- include before all other javascript -->
+    <!-- include before all javascript -->
     <script type="text/javascript" src="thumbs.js"></script>
-    
-    // ... elsewhere ...
-    
-    element.addEventListener('tap',        callback);   // 'click'     on desktop
-    element.addEventListener('touchstart', callback);   // 'mousedown' on desktop
-    element.addEventListener('touchend',   callback);   // 'mouseup'   on desktop
-    element.addEventListener('touchmove',  callback);   // 'mousemove' on desktop
-    
-    element.addEventListener('click',     callback);    // 'tap'        on touch-device
-    element.addEventListener('mousedown', callback);    // 'touchstart' on touch-device
-    element.addEventListener('mouseup',   callback);    // 'touchend'   on touch-device
-    element.addEventListener('mousemove', callback);    // 'touchmove'  on touch-device
+
+    // later on...
+
+    element.addEventListener('touchstart', callback, false);
+    element.addEventListener('touchend',   callback, false);
+    element.addEventListener('touchmove',  callback, false);
+
+    // jQuery or zepto.js
+    $(element).bind('touchstart', callback);
+
+    // xui
+    $(element).on('touchstart', callback);
+
+Building from source
+--------------------
+
+Run:
+
+    make
+
+Generates:
+
+    build/thumbs.x.x.js
+    build/thumbs.x.x.min.js
 
 Want to contribute?
 -------------------
 
-[Issue Tracker](https://github.com/mwbrooks/thumbs.js/issues)
+### Report or fix an issue
 
-[Roadmap](https://github.com/mwbrooks/thumbs.js/wiki)
+We use [GitHub Issues](https://github.com/mwbrooks/thumbs.js/issues)
+
+By the way, you rock! Thanks for helping us improve thumbs.js.
+
+### Pull Requests
+
+Pull requests are welcome!
+
+We appreciate the use of topic branches.
+
+    git checkout -b issue_23
+
+    # code
+
+    git commit -m "Issue 23: Fix a bad bug."
+
+    git push origin issue_23
+
+    # send pull request from branch issue_23 to mwbrooks:master
+
