@@ -5,18 +5,17 @@
   <script type="text/javascript" src="../lib/thumbs.js"></script>
   
   <script type="text/javascript">
-    function onload() {
-      var callback = function(e) { console.log(e.type); };
+    window.addEventListener('load', function() {
+        var callback = function(e) { console.log(e.type); };
 
-      document.getElementById('touchstart').addEventListener('touchstart', callback);
-      document.getElementById('touchend').addEventListener('touchend', callback);
-      document.getElementById('touchmove').addEventListener('touchmove', callback);
-      document.getElementById('mousedown').addEventListener('mousedown', callback);
-      document.getElementById('mouseup').addEventListener('mouseup', callback);
-      document.getElementById('mousemove').addEventListener('mousemove', callback);
-    }
+        document.getElementById('mousedown').addEventListener('mousedown', callback, false);
+        document.getElementById('mouseup').addEventListener('mouseup', callback, false);
+        document.getElementById('mousemove').addEventListener('mousemove', callback, false);
 
-    window.addEventListener('load', onload);
+        document.getElementById('touchstart').addEventListener('touchstart', callback, false);
+        document.getElementById('touchend').addEventListener('touchend', callback, false);
+        document.getElementById('touchmove').addEventListener('touchmove', callback, false);
+    }, false);
   </script>
 
   <style type="text/css">
