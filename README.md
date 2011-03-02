@@ -1,5 +1,5 @@
-Thumbs
-======
+thumbs.js
+=========
 
 > Add touch support to your browser.
 
@@ -9,15 +9,19 @@ About
 Small, transparent, and syntax-less library that adds touch support to your browser.
 
 - Handy for desktop debugging
-- Support touch-less devices
+- Add touch to touch-less devices
+- Does nothing on touch-enabled devices
 - [PhoneGap](http://phonegap.com) and mobile web friendly
 
 More detail and a demo are on the [thumbs.js homepage](http://mwbrooks.github.com/thumbs.js/).
 
-Requirements
-------------
+Browser Support
+---------------
 
-- Webkit browser (we will add FireFox support soon)
+- FireFox Desktop
+- Opera Desktop
+- Webkit Desktop
+- Webkit Mobile
 
 Usage
 -----
@@ -52,9 +56,16 @@ Generates:
 Running the tests
 -----------------
 
-Open in a Webkit browser:
+Open in a browser:
 
     test/index.html
+
+Running a simple example
+------------------------
+
+Open in a browser:
+
+    example/index.html
 
 Want to contribute?
 -------------------
