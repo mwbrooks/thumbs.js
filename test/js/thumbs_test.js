@@ -1,4 +1,4 @@
-window.addEventListener('load', function(){
+(function() {
 
     // mousedown
 
@@ -48,4 +48,4 @@ window.addEventListener('load', function(){
         listen('touchmove').trigger('mousemove');
     });
 
-});
+})();
