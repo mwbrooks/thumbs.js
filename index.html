@@ -38,8 +38,9 @@
             <h1>About</h1>
             <p>Add touch support to your (webkit) browser.</p>
             <ul>
-                <li>Handy for desktop debugging</li>
+                <li>TouchEvent <a href="http://remysharp.com/2010/10/08/what-is-a-polyfill/">polyfill</a></li>
                 <li>Support touch-less devices</li>
+                <li>Handy for desktop debugging</li>
                 <li><a href="http://phonegap.com">PhoneGap</a> and mobile web friendly</li>
             </ul>
         </section>
@@ -53,6 +54,14 @@
 // later on...
 
 element.addEventListener('touchstart', callback, false);
+
+// or an attribute...
+
+element.setAttribute('ontouchstart', 'console.log("hi");');
+
+// or an inline attribute...
+
+&lt;a href="#" ontouchstart="console.log('hi');"&gt;Hi&lt;/a&gt;
 </code>
 </pre>
         </section>
