@@ -12,9 +12,17 @@
         document.getElementById('mouseup').addEventListener('mouseup', callback, false);
         document.getElementById('mousemove').addEventListener('mousemove', callback, false);
 
+        document.getElementById('mousedown-attr').setAttribute('onmousedown', 'console.log("onmousedown");');
+        document.getElementById('mouseup-attr').setAttribute('onmouseup', 'console.log("onmouseup");');
+        document.getElementById('mousemove-attr').setAttribute('onmousemove', 'console.log("onmousemove");');
+
         document.getElementById('touchstart').addEventListener('touchstart', callback, false);
         document.getElementById('touchend').addEventListener('touchend', callback, false);
         document.getElementById('touchmove').addEventListener('touchmove', callback, false);
+
+        document.getElementById('touchstart-attr').setAttribute('ontouchstart', 'console.log("ontouchstart");');
+        document.getElementById('touchend-attr').setAttribute('ontouchend', 'console.log("ontouchend");');
+        document.getElementById('touchmove-attr').setAttribute('ontouchmove', 'console.log("ontouchmove");');
     }, false);
   </script>
 
@@ -44,10 +52,21 @@
 </head>
 <body>
   <div id="touchstart" class="button">TouchStart</div>
+  <div id="touchstart-attr" class="button">TouchStart (Attribute)</div>
+
   <div id="mousedown" class="button">MouseDown</div>
+  <div id="mousedown-attr" class="button">MouseDown (Attribute)</div>
+
   <div id="touchend" class="button">TouchEnd</div>
+  <div id="touchend-attr" class="button">TouchEnd (Attribute)</div>
+
   <div id="mouseup" class="button">MouseUp</div>
+  <div id="mouseup-attr" class="button">MouseUp (Attribute)</div>
+
   <div id="touchmove" class="button">TouchMove</div>
+  <div id="touchmove-attr" class="button">TouchMove (Attribute)</div>
+
   <div id="mousemove" class="button">MouseMove</div>
+  <div id="mousemove-attr" class="button">MouseMove (Attribute)</div>
 </body>
 </html>

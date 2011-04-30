@@ -107,6 +107,38 @@ window.helper = (function(scope) {
         },
 
         /**
+         * Event Attribute Assertion
+         *
+         * Creates an event attribute to an element.
+         * For example, <a href="#" ontouchstart="success();"></a>
+         */
+        on: function(name, options) {
+            QUnit.stop();
+            expect(1);
+
+            var TIMEOUT = 300;
+            var options = merge(options, defaultOptions);
+            var element = document.getElementById('fixture');
+
+            var success = function() {
+                clearTimeout(timeoutId);
+                options.onTrigger();
+                QUnit.start();
+            };
+
+            var timeoutId = setTimeout(function() {
+                options.onTimeout();
+                QUnit.start();
+            }, TIMEOUT);
+
+            window.helper.onSuccess = success;
+
+            element.setAttribute('on' + name, 'window.helper.onSuccess()');
+
+            return this;
+        },
+
+        /**
          * Trigger an event on the listener's element
          *
          * @param {String} name of event to trigger
