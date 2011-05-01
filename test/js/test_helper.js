@@ -139,6 +139,35 @@ window.helper = (function(scope) {
         },
 
         /**
+         * Event Property Assertion
+         *
+         * Binds an event to an element using a property
+         * For example: element.onclick = function(e) {};
+         */
+        onProperty: function(name, options) {
+            QUnit.stop();
+            expect(1);
+
+            var TIMEOUT = 300;
+            var options = merge(options, defaultOptions);
+            var element = document.getElementById('fixture');
+
+            var success = function() {
+                clearTimeout(timeoutId);
+                options.onTrigger();
+                QUnit.start();
+            };
+
+            var timeoutId = setTimeout(function() {
+                options.onTimeout();
+                QUnit.start();
+            }, TIMEOUT);
+
+            element['on' + name] = success;
+
+            return this;
+        },
+        /**
          * Trigger an event on the listener's element
          *
          * @param {String} name of event to trigger
@@ -147,6 +176,16 @@ window.helper = (function(scope) {
             var e = createEvent(name);
             var element = document.getElementById('fixture');
             element.dispatchEvent(e);
+
+            return this;
+        },
+
+        invoke: function(name) {
+            var element = document.getElementById('fixture');
+
+            var fn = element['on' + name];
+            if (typeof fn === 'function') fn();
+
             return this;
         }
     };

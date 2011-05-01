@@ -16,6 +16,10 @@
         document.getElementById('mouseup-attr').setAttribute('onmouseup', 'console.log("onmouseup");');
         document.getElementById('mousemove-attr').setAttribute('onmousemove', 'console.log("onmousemove");');
 
+        document.getElementById('mousedown-prop').onmousedown = function() { console.log('.onmousedown') };
+        document.getElementById('mouseup-prop').onmouseup     = function() { console.log('.onmouseup') };
+        document.getElementById('mousemove-prop').onmousemove = function() { console.log('.onmousemove') };
+
         document.getElementById('touchstart').addEventListener('touchstart', callback, false);
         document.getElementById('touchend').addEventListener('touchend', callback, false);
         document.getElementById('touchmove').addEventListener('touchmove', callback, false);
@@ -23,6 +27,10 @@
         document.getElementById('touchstart-attr').setAttribute('ontouchstart', 'console.log("ontouchstart");');
         document.getElementById('touchend-attr').setAttribute('ontouchend', 'console.log("ontouchend");');
         document.getElementById('touchmove-attr').setAttribute('ontouchmove', 'console.log("ontouchmove");');
+
+        document.getElementById('touchstart-prop').ontouchstart = function() { console.log('.ontouchstart') };
+        document.getElementById('touchend-prop').ontouchend     = function() { console.log('.ontouchend') };
+        document.getElementById('touchmove-prop').ontouchmove   = function() { console.log('.ontouchmove') };
     }, false);
   </script>
 
@@ -46,27 +54,33 @@
       margin:10px auto;
       padding:10px 8px;
       text-align:center;
-      width:100px;
+      width:200px;
     }
   </style>
 </head>
 <body>
   <div id="touchstart" class="button">TouchStart</div>
   <div id="touchstart-attr" class="button">TouchStart (Attribute)</div>
+  <div id="touchstart-prop" class="button">TouchStart (Property)</div>
 
   <div id="mousedown" class="button">MouseDown</div>
   <div id="mousedown-attr" class="button">MouseDown (Attribute)</div>
+  <div id="mousedown-prop" class="button">MouseDown (Property)</div>
 
   <div id="touchend" class="button">TouchEnd</div>
   <div id="touchend-attr" class="button">TouchEnd (Attribute)</div>
+  <div id="touchend-prop" class="button">TouchEnd (Property)</div>
 
   <div id="mouseup" class="button">MouseUp</div>
   <div id="mouseup-attr" class="button">MouseUp (Attribute)</div>
+  <div id="mouseup-prop" class="button">MouseUp (Property)</div>
 
   <div id="touchmove" class="button">TouchMove</div>
   <div id="touchmove-attr" class="button">TouchMove (Attribute)</div>
+  <div id="touchmove-prop" class="button">TouchMove (Property)</div>
 
   <div id="mousemove" class="button">MouseMove</div>
   <div id="mousemove-attr" class="button">MouseMove (Attribute)</div>
+  <div id="mousemove-prop" class="button">MouseMove (Property)</div>
 </body>
 </html>
