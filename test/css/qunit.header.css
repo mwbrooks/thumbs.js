@@ -1,0 +1,9 @@
+#qunit-testresult-top {
+  background-color: #D2E0E6;
+	border-bottom: 1px solid white;
+  color: #2B81AF;
+	font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
+  font-size: small; 
+	margin: 0px;
+	padding: 0.5em 0.5em 0.5em 2.5em;
+}
