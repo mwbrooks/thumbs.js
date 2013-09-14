@@ -1,4 +1,4 @@
-VERSION = $(shell cat VERSION)
+VERSION = $(shell git describe --tags --abbrev=0)
 
 build: clean
 	mkdir ./build
