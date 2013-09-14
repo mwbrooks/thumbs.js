@@ -27,6 +27,7 @@ Usage
 -----
 
     <!-- include before all javascript -->
+    <!-- can also be dynamically loaded -->
     <script type="text/javascript" src="thumbs.js"></script>
 
     // later on...
